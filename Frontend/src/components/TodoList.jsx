@@ -28,7 +28,7 @@ export default function TodoList() {
   async function compTodo(value) {
     let current = new Date().toTimeString();
     await fetch(
-      `/todo/updateItem/${value.item}/${current}`,
+      `http://localhost:8000/todo/updateItem/${value.item}/${current}`,
       {
         mode: "cors",
         method: "put",
@@ -38,7 +38,7 @@ export default function TodoList() {
       .then((data) => {
         if (data.success) {
           console.log(data.success);
-          window.location('http://localhost:8000/')
+          window.location('http://localhost:3000/')
         } else {
           console.log(data.message);
         }
@@ -46,7 +46,7 @@ export default function TodoList() {
   }
 
   async function getItems() {
-    await fetch("/todo/getItems", {
+    await fetch("http://localhost:8000/todo/getItems", {
       mode: "cors",
     })
       .then((response) => response.json())
@@ -57,7 +57,7 @@ export default function TodoList() {
   }
 
   async function handleDelete(item) {
-    await fetch(`/todo/deleteItem/${item}`, {
+    await fetch(`http://localhost:8000/todo/deleteItem/${item}`, {
       mode: "cors",
       method: "delete",
     })

@@ -24,10 +24,10 @@ export default function AddItem() {
       comp: comp,
       status: status,
     };
-    const result = await axios.post("/todo/addItem", data);
+    const result = await axios.post("http://localhost:8000/todo/addItem", data);
     if (result.data.message) {
       console.log(result.data.message);
-      window.location("http://localhost:8000/");
+      window.location("http://localhost:3000/");
     } else {
       alert(result.data.err);
     }
