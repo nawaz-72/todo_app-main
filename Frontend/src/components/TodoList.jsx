@@ -38,7 +38,7 @@ export default function TodoList() {
       .then((data) => {
         if (data.success) {
           console.log(data.success);
-          window.location('http://localhost:3000/')
+          window.location('http://localhost:8000/')
         } else {
           console.log(data.message);
         }
@@ -65,7 +65,7 @@ export default function TodoList() {
       .then((data) => {
         if (data.message) {
           console.log(data.message);
-          window.location('http://localhost:3000/')
+          window.location('http://localhost:8000/')
         } else {
           console.log(data.err);
         }
@@ -74,7 +74,7 @@ export default function TodoList() {
 
   useEffect(() => {
     getItems();
-  }, todoList);
+  }, []);
   return (
     <div>
       <List
@@ -112,7 +112,7 @@ export default function TodoList() {
                     <ListItemIcon>
                       <Checkbox
                         edge="start"
-                        checked={value.status == "completed" ? "checked" : ""}
+                        checked={value.status === "completed" ? "checked" : ""}
                         tabIndex={-1}
                         disableRipple
                         inputProps={{ "aria-labelledby": labelId }}
